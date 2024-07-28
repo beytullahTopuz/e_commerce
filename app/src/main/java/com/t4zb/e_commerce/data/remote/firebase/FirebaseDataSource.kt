@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.t4zb.e_commerce.data.model.Product
 import com.t4zb.e_commerce.data.model.User
 import com.t4zb.e_commerce.data.model.UserResultType
 import javax.inject.Inject
@@ -164,5 +165,19 @@ class FirebaseDataSource @Inject constructor(
             .addOnFailureListener { exception ->
                 onComplete(false)
             }
+    }
+
+    fun getProducts(onComplete: (List<Product>) -> Unit) {
+        val productsRef = databaseReference.child("products")
+        productsRef.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val products = task.result.children.mapNotNull {
+                    it.getValue(Product::class.java)
+                }
+                onComplete(products)
+            } else {
+                onComplete(emptyList())
+            }
+        }
     }
 }
