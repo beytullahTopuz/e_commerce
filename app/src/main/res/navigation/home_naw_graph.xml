@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/navigation_market"
+    tools:ignore="InvalidNavigation">
+
+    <fragment
+        android:id="@+id/navigation_market"
+        android:name="com.t4zb.e_commerce.ui.view.fragment.MarketFragment"
+        android:label="Market"
+        tools:layout="@layout/fragment_market" />
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.t4zb.e_commerce.ui.view.fragment.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/navigation_basket"
+        android:name="com.t4zb.e_commerce.ui.view.fragment.BasketFragment"
+        android:label="Basket"
+        tools:layout="@layout/fragment_basket" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.t4zb.e_commerce.ui.view.fragment.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>
