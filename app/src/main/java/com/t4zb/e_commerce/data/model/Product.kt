@@ -11,6 +11,7 @@ data class Product(
     val productOwner: String? = null,
     val productColor: String? = null,
     val productSize: String? = null,
+    val productSizeList: List<String>? = null,
     val productLabel: String? = null,
     val star: Double? = null
 )

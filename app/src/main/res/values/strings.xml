@@ -17,4 +17,9 @@
     <string name="complete_your_profile">Complete Your Profile</string>
     <string name="gender">Gender</string>
     <string name="complete_profile">Complete Profile</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="select_size">Select Size</string>
+    <string name="total_price">Total Price</string>
+    <string name="product_image">product image</string>
+    <string name="add_to_basket">Add to Basket</string>
 </resources>

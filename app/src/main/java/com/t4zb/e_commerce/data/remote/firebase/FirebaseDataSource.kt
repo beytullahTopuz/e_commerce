@@ -180,4 +180,24 @@ class FirebaseDataSource @Inject constructor(
             }
         }
     }
+
+    fun getPopularProducts(onComplete: (List<Product>) -> Unit) {
+        val productsRef = databaseReference.child("products")
+        productsRef.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val products = task.result.children.mapNotNull { snapshot ->
+                    val product = snapshot.getValue(Product::class.java)
+                    if (product?.star != null && product.star >= 5.0) {
+                        product
+                    } else {
+                        null
+                    }
+                }
+                onComplete(products)
+            } else {
+                onComplete(emptyList())
+            }
+        }
+    }
+
 }

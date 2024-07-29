@@ -10,7 +10,11 @@
         android:id="@+id/navigation_market"
         android:name="com.t4zb.e_commerce.ui.view.fragment.MarketFragment"
         android:label="Market"
-        tools:layout="@layout/fragment_market" />
+        tools:layout="@layout/fragment_market">
+        <action
+            android:id="@+id/action_navigation_market_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.t4zb.e_commerce.ui.view.fragment.SearchFragment"
@@ -26,5 +30,9 @@
         android:name="com.t4zb.e_commerce.ui.view.fragment.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.t4zb.e_commerce.ui.view.fragment.ProductDetailFragment"
+        android:label="ProductDetailFragment" />
 
 </navigation>

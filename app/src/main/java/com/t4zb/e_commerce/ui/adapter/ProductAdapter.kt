@@ -9,8 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.t4zb.e_commerce.R
 import com.t4zb.e_commerce.data.model.Product
+import com.t4zb.e_commerce.ui.listener.ProductItemClickListener
 
-class ProductAdapter(private val productList: List<Product>) :
+class ProductAdapter(
+    private val productList: List<Product>,
+    private val itemClickListener: ProductItemClickListener
+) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,6 +38,10 @@ class ProductAdapter(private val productList: List<Product>) :
         Glide.with(holder.productImage.context)
             .load(product.productPictureList?.get(0))
             .into(holder.productImage)
+
+        holder.itemView.setOnClickListener {
+            itemClickListener.itemClicked(position, product)
+        }
     }
 
     override fun getItemCount(): Int {

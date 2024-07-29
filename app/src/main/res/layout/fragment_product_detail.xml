@@ -1,0 +1,274 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Back Button -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileTitle"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileTitle"
+        app:layout_constraintWidth_percent="0.1"
+        app:tint="@android:color/black" />
+
+    <!-- Profile Image -->
+    <TextView
+        android:id="@+id/tvProfileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/product_detail"
+        android:textSize="@dimen/_18sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_images_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/name_and_star_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_images_recycler_view"
+        app:layout_constraintWidth_percent="0.95">
+
+        <TextView
+            android:id="@+id/product_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Adidas Ayakkabi"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.78" />
+
+        <!-- Product Rating -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/starIcon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/productStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="4.9"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_7sdp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/productDetailTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:gravity="center_vertical"
+        android:text="@string/product_detail"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/name_and_star_layout"
+        app:layout_constraintTop_toBottomOf="@+id/name_and_star_layout" />
+
+    <ScrollView
+        android:id="@+id/scrollable_text_view_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productDetailTextView"
+        app:layout_constraintWidth_percent="0.95">
+
+        <TextView
+            android:id="@+id/product_description_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    </ScrollView>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollable_text_view_container"
+        app:layout_constraintWidth_percent="0.95"
+        tools:layout_editor_absoluteY="488dp" />
+
+    <TextView
+        android:id="@+id/select_size_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="@string/select_size"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/name_and_star_layout"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <RadioGroup
+        android:id="@+id/size_radio_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_size_label">
+
+        <!-- Radio buttons for sizes -->
+        <RadioButton
+            android:id="@+id/sizeRadioButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S"
+            android:visibility="invisible" />
+
+        <RadioButton
+            android:id="@+id/sizeRadioButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:visibility="invisible" />
+
+        <RadioButton
+            android:id="@+id/sizeRadioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L"
+            android:visibility="invisible" />
+
+        <RadioButton
+            android:id="@+id/sizeRadioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XL"
+            android:visibility="invisible" />
+
+        <RadioButton
+            android:id="@+id/sizeRadioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXL"
+            android:visibility="invisible" />
+
+        <RadioButton
+            android:id="@+id/sizeRadioButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXXL"
+            android:visibility="invisible" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/price_card_bg"
+        android:elevation="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/size_radio_group"
+        app:layout_constraintVertical_bias="1.0">
+
+        <!-- Total Price Text -->
+        <TextView
+            android:id="@+id/total_price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/total_price"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.32999998" />
+
+        <!-- Price Amount Text -->
+        <TextView
+            android:id="@+id/total_price_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="$83.97"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/total_price_label"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <!-- Add to Cart Button -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/add_to_cart_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/add_basket_button_bg"
+            android:backgroundTint="#704327"
+            android:drawableStart="@drawable/ic_basket"
+            android:drawablePadding="8dp"
+            android:textAlignment="center"
+            android:drawableTint="@color/white"
+            android:padding="16dp"
+            android:text="@string/add_to_basket"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/total_price_amount"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

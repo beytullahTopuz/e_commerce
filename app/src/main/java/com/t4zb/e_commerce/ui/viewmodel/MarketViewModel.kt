@@ -16,13 +16,23 @@ class MarketViewModel @Inject constructor(
     private val _products = MutableLiveData<List<Product>>()
     val products: LiveData<List<Product>> get() = _products
 
+    private val _popularProducts = MutableLiveData<List<Product>>()
+    val popularProducts: LiveData<List<Product>> get() = _popularProducts
+
     init {
         fetchProducts()
+        fetchPopularProducts()
     }
 
     private fun fetchProducts() {
         productRepo.getProducts { productList ->
             _products.value = productList
+        }
+    }
+
+    private fun fetchPopularProducts() {
+        productRepo.getPopularProducts { products ->
+            _popularProducts.value = products
         }
     }
 }

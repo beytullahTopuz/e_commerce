@@ -97,14 +97,30 @@ class InsertProductFragment : Fragment() {
         val productStockCount = mBinding.etProductStockCount.text.toString().toIntOrNull()
         val productOwner = mBinding.etProductOwner.text.toString()
         val productColor = mBinding.etProductColor.text.toString()
-        val productSize = mBinding.etProductSize.text.toString()
+        val productSize1 = mBinding.etProductSize1.text.toString()
+        val productSize2 = mBinding.etProductSize2.text.toString()
+        val productSize3 = mBinding.etProductSize3.text.toString()
+        val productSize4 = mBinding.etProductSize4.text.toString()
+        val productSize5 = mBinding.etProductSize5.text.toString()
+        val productSize6 = mBinding.etProductSize6.text.toString()
         val productLabel = mBinding.etProductLabel.text.toString()
         val productStar = mBinding.etProductStar.text.toString().toDoubleOrNull()
 
+
         if (productName.isNotEmpty() && productDescription.isNotEmpty() && productPrice != null &&
             productCategory.isNotEmpty() && productStockCount != null && productOwner.isNotEmpty() &&
-            productColor.isNotEmpty() && productSize.isNotEmpty() && productLabel.isNotEmpty() && productStar != null
+            productColor.isNotEmpty() && productSize1.isNotEmpty() && productSize2.isNotEmpty() &&
+            productLabel.isNotEmpty() && productStar != null
         ) {
+
+            val productSizeList = listOf(
+                productSize1,
+                productSize2,
+                productSize3,
+                productSize4,
+                productSize5,
+                productSize6
+            )
 
             val product = Product(
                 productName = productName,
@@ -115,7 +131,8 @@ class InsertProductFragment : Fragment() {
                 productPictureList = productImages,
                 productOwner = productOwner,
                 productColor = productColor,
-                productSize = productSize,
+                productSize = null, // Bu alan artık kullanılmıyor
+                productSizeList = productSizeList,
                 productLabel = productLabel,
                 star = productStar
             )

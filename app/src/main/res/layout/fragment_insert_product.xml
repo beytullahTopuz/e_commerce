@@ -125,19 +125,91 @@
                     android:hint="Product Color" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Product Size -->
+
+            <!-- Product Size 1 -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilProductSize"
+                android:id="@+id/tilProductSize1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etProductSize"
+                    android:id="@+id/etProductSize1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Product Size" />
+                    android:hint="Product Size 1" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Product Size 2 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProductSize2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProductSize2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Product Size 2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Product Size 3 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProductSize3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProductSize3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Product Size 3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Product Size 4 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProductSize4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProductSize4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Product Size 4" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Product Size 5 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProductSize5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProductSize5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Product Size 5" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Product Size 6 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProductSize6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etProductSize6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Product Size 6" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <!-- Product Label -->
             <com.google.android.material.textfield.TextInputLayout

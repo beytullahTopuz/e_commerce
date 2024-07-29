@@ -11,4 +11,8 @@ class ProductRepo @Inject constructor(
     fun getProducts(onComplete: (List<Product>) -> Unit) {
         firebaseDataSource.getProducts(onComplete)
     }
+
+    fun getPopularProducts(onComplete: (List<Product>) -> Unit) {
+        firebaseDataSource.getPopularProducts(onComplete)
+    }
 }

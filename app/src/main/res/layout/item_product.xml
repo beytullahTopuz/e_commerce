@@ -40,7 +40,7 @@
         android:layout_marginTop="8dp"
         android:text="Product Name"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_9sdp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/productImage"
@@ -72,7 +72,7 @@
             android:layout_marginStart="4dp"
             android:text="4.9"
             android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/_7sdp" />
     </LinearLayout>
 
     <!-- Product Price -->
@@ -83,7 +83,7 @@
         android:layout_marginTop="4dp"
         android:text="$0.00"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_11sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
