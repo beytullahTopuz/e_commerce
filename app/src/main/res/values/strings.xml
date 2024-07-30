@@ -22,4 +22,6 @@
     <string name="total_price">Total Price</string>
     <string name="product_image">product image</string>
     <string name="add_to_basket">Add to Basket</string>
+    <string name="basket">Basket</string>
+    <string name="start_payment">Start Payment</string>
 </resources>

@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "E_Commerce"
 include(":app")
- 
+include(":paymentSDK")
