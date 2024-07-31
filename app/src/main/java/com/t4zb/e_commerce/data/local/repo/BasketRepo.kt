@@ -2,6 +2,7 @@ package com.t4zb.e_commerce.data.local.repo
 
 import com.t4zb.e_commerce.data.local.dao.BasketDao
 import com.t4zb.e_commerce.data.model.Basket
+import com.t4zb.e_commerce.data.model.ProductRoom
 import javax.inject.Inject
 
 class BasketRepo @Inject constructor(
@@ -22,6 +23,10 @@ class BasketRepo @Inject constructor(
         } catch (e: Exception) {
             Result.failure(e)
         }
+    }
+
+    suspend fun deleteBasketById(basketId: Int) {
+        basketDao.deleteBasketById(basketId)
     }
 
     suspend fun updateBasket(basket: Basket) {
@@ -50,5 +55,28 @@ class BasketRepo @Inject constructor(
             false
         }
     }
+
+    suspend fun removeItemOrDeleteBasket(userId: String, productToRemove: ProductRoom): Boolean {
+        return try {
+            val existingBasket = basketDao.getBasketByUserId(userId ?: "")
+            if (existingBasket != null) {
+                val updatedProductList = existingBasket.basketProductList?.toMutableList() ?: mutableListOf()
+                updatedProductList.remove(productToRemove)
+                if (updatedProductList.isEmpty()) {
+                    // If the basket is empty after removing the product, delete the basket
+                    basketDao.deleteBasket(existingBasket)
+                } else {
+                    // Otherwise, update the basket with the remaining products
+                    val updatedBasket = existingBasket.copy(basketProductList = updatedProductList)
+                    basketDao.updateBasket(updatedBasket)
+                }
+            }
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+
 
 }

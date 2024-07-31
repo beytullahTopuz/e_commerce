@@ -21,5 +21,8 @@ interface BasketDao {
     @Delete
     suspend fun deleteBasket(basket: Basket)
 
+    @Query("DELETE FROM Basket WHERE basketId = :basketId")
+    suspend fun deleteBasketById(basketId: Int)
+
 
 }

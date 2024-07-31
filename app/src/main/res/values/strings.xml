@@ -24,4 +24,9 @@
     <string name="add_to_basket">Add to Basket</string>
     <string name="basket">Basket</string>
     <string name="start_payment">Start Payment</string>
+    <string name="checkout">Checkout</string>
+    <string name="confirm_payment">Confirm Payment</string>
+    <string name="change">CHANGE</string>
+    <string name="order_list">Order List</string>
+    <string name="save_card">Save Card</string>
 </resources>

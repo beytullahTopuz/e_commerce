@@ -1,5 +1,6 @@
 package com.t4zb.e_commerce.data.model
 
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date

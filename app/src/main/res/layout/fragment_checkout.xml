@@ -1,33 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.view.fragment.BasketFragment">
+    tools:context=".ui.view.fragment.CheckoutFragment">
 
     <TextView
         android:id="@+id/tvProfileTitle"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:text="@string/basket"
+        android:text="@string/checkout"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Shipping Address Section -->
+    <TextView
+        android:id="@+id/tv_shipping_address_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:text="Shipping Address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_order_list_title"
+        app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
+
+    <TextView
+        android:id="@+id/tv_shipping_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:text="Home\n1901 Thornridge Cir. Shiloh, Hawaii 81063"
+        app:layout_constraintEnd_toStartOf="@id/btn_change_address"
+        app:layout_constraintStart_toStartOf="@+id/tv_order_list_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_shipping_address_title" />
+
+    <Button
+        android:id="@+id/btn_change_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_shipping_address" />
+
+    <!-- Order List Section -->
+    <TextView
+        android:id="@+id/tv_order_list_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:text="@string/order_list"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_shipping_address" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/basket_rv"
+        android:id="@+id/rv_order_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileTitle"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_list_title"
         tools:itemCount="3"
         tools:listitem="@layout/basket_list_basket_item" />
 
@@ -79,13 +122,14 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/add_basket_button_bg"
             android:backgroundTint="#06D001"
+            android:clickable="true"
             android:drawableStart="@drawable/ic_basket"
             android:drawablePadding="8dp"
             android:drawableTint="@color/white"
-            android:clickable="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:focusable="true"
             android:padding="16dp"
-            android:text="@string/start_payment"
+            android:text="@string/confirm_payment"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
@@ -96,5 +140,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.6" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

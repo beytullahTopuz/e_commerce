@@ -29,7 +29,6 @@ class ProductDetailViewModel @Inject constructor(
          viewModelScope.launch {
             val result =  basketRepo.insertOrUpdateBasket(basket)
              _basketOperationResult.postValue(result)
-             Log.d("BEYTULLAH", "insertOrUpdateBasket: ${result}")
          }
     }
 
