@@ -73,9 +73,5 @@ class LoginFragment : Fragment() {
         mBinding.etPassword.doAfterTextChanged { text ->
             viewModel.setPassword(text.toString())
         }
-
-        mBinding.btnAppleSignIn.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_insertProductFragment)
-        }
     }
 }

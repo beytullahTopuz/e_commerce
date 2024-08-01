@@ -76,20 +76,21 @@ class BasketFragment : Fragment(), DeleteBasketItemListener {
 
     private fun observeViewModel() {
         basketViewModel.basket.observe(viewLifecycleOwner) { basket ->
-            basket?.let {
-                AppConfig.currentSelectedBasket = it
-                it.basketProductList?.let { it1 ->
-                    setTotalPrice(it1)
-                }
-                basketAdapter = BasketAdapter(it.basketProductList ?: emptyList(), this)
+            if (basket != null && basket.basketProductList != null) {
+                AppConfig.currentSelectedBasket = basket
+                setTotalPrice(basket.basketProductList)
+                basketAdapter = BasketAdapter(basket.basketProductList, this)
+                mBinding.basketRv.adapter = basketAdapter
+            } else {
+                AppConfig.currentSelectedBasket = null
+                setTotalPrice(emptyList())
+                basketAdapter = BasketAdapter(emptyList(), this)
                 mBinding.basketRv.adapter = basketAdapter
             }
         }
 
-        basketViewModel.removeBasketResult.observe(viewLifecycleOwner) { result ->
-            if (result) {
+        basketViewModel.removeBasketResult.observe(viewLifecycleOwner) {
                 AppConfig.userId?.let { basketViewModel.fetchBasketByUserId(it) }
-            }
         }
     }
 

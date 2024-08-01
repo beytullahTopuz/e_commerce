@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.fragment.CheckoutFragment">
 
+    <!-- Back Button -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@+id/tvProfileTitle"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvProfileTitle"
+        app:layout_constraintWidth_percent="0.1"
+        app:tint="@android:color/black" />
+
     <TextView
         android:id="@+id/tvProfileTitle"
         android:layout_width="wrap_content"
@@ -36,19 +52,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:text="Home\n1901 Thornridge Cir. Shiloh, Hawaii 81063"
-        app:layout_constraintEnd_toStartOf="@id/btn_change_address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_order_list_title"
         app:layout_constraintTop_toBottomOf="@id/tv_shipping_address_title" />
 
-    <Button
-        android:id="@+id/btn_change_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/change"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_shipping_address" />
 
     <!-- Order List Section -->
     <TextView

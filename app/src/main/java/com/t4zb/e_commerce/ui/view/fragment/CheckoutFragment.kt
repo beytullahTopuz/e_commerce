@@ -54,6 +54,12 @@ class CheckoutFragment : Fragment(), DeleteBasketItemListener {
 
     private fun initializeUI(basket: Basket) {
 
+        mBinding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+            AppConfig.currentSelectedProduct = null
+        }
+
+
         basket.userId?.let { checkoutViewModel.getUserAddress(it) }
         var totalPrice: Double = 0.0
         val productRoomList = basket.basketProductList

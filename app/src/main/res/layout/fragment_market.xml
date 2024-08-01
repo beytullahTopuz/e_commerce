@@ -36,153 +36,18 @@
             <!-- Dots will be added dynamically -->
         </LinearLayout>
 
-        <!-- Category Section -->
-        <TextView
-            android:id="@+id/tvCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Category"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dotsIndicator" />
-
-        <TextView
-            android:id="@+id/tvSeeAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="See All"
-            android:textColor="@android:color/holo_blue_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvCategory" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCategory"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.1"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCategory" />
-
-        <!-- Flash Sale Section -->
-        <TextView
-            android:id="@+id/tvFlashSale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Flash Sale"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvCategory" />
-
-        <LinearLayout
-            android:id="@+id/flashSaleTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toEndOf="@id/tvFlashSale"
-            app:layout_constraintTop_toTopOf="@id/tvFlashSale">
-
-            <!-- Add your countdown timer views here -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="02:12:56"
-                android:textColor="@android:color/holo_red_light"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvSeeAllFlashSale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="See All"
-            android:textColor="@android:color/holo_blue_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvFlashSale" />
-
-        <!-- Filter Buttons -->
-        <LinearLayout
-            android:id="@+id/flashSaleFilters"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFlashSale">
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="All" />
-
-                    <Button
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Newest" />
-
-                    <Button
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Popular" />
-
-                    <Button
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Man" />
-
-                    <Button
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Women" />
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-        </LinearLayout>
-
         <!-- Flash Sale RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFlashSale"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            tools:listitem="@layout/item_product"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/flashSaleFilters" />
+            app:layout_constraintTop_toBottomOf="@+id/dotsIndicator"
+            tools:listitem="@layout/item_product" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

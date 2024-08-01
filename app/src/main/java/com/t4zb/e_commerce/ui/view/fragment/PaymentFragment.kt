@@ -48,6 +48,12 @@ class PaymentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mBinding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+            AppConfig.currentSelectedProduct = null
+        }
+
+
         val amount = arguments?.let {
             PaymentFragmentArgs.fromBundle(it).amount
         }
@@ -116,6 +122,7 @@ class PaymentFragment : Fragment() {
                 )
 
                 viewModel.insertOrder(order)
+                basketId?.let { viewModel.deleteBasket(it) }
 
                 AppConfig.currentSelectedBasket = null
                 AppConfig.currentSelectedProduct = null
@@ -127,7 +134,7 @@ class PaymentFragment : Fragment() {
         })
     }
 
-    fun getCurrentDate(): String {
+    private fun getCurrentDate(): String {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         return dateFormat.format(Date())
     }

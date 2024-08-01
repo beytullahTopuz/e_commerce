@@ -108,62 +108,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword"
             app:layout_constraintWidth_percent="0.8" />
 
-        <!-- Or Sign In With TextView -->
-        <TextView
-            android:id="@+id/tvOrSignInWith"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="Or sign in with"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
-
-        <!-- Social Media Buttons -->
-        <LinearLayout
-            android:id="@+id/llSocialButtons"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.078"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvOrSignInWith"
-            app:layout_constraintWidth_percent="0.65">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAppleSignIn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/apple_logo"
-                android:backgroundTint="@null"
-                app:cornerRadius="25dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnGoogleSignIn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/google_logo"
-                android:backgroundTint="@null"
-                app:cornerRadius="25dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnFacebookSignIn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/facebook_logo"
-                android:backgroundTint="@null"
-                app:cornerRadius="25dp" />
-        </LinearLayout>
 
         <!-- Sign Up TextView -->
         <TextView
@@ -177,7 +121,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llSocialButtons" />
+            app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

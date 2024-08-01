@@ -30,4 +30,11 @@
     <string name="order_list">Order List</string>
     <string name="save_card">Save Card</string>
     <string name="order">Order</string>
+    <string name="or_sign_up_with">Or sign up with</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="terms_condition">Terms Condition</string>
+    <string name="agree_with">Agree with</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="create_account">Create Account</string>
 </resources>

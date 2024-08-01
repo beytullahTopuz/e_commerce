@@ -57,7 +57,7 @@ class MarketFragment : Fragment(), ProductItemClickListener {
         })
 
         marketViewModel.popularProducts.observe(viewLifecycleOwner, Observer { products ->
-            productViewPagerAdapter = ProductViewPagerAdapter(products)
+            productViewPagerAdapter = ProductViewPagerAdapter(products, this)
             mBinding.viewPager.adapter = productViewPagerAdapter
             setupViewPagerIndicator(products.size)
         })

@@ -10,9 +10,11 @@ import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.t4zb.e_commerce.R
 import com.t4zb.e_commerce.data.model.Product
+import com.t4zb.e_commerce.ui.listener.ProductItemClickListener
 
 class ProductViewPagerAdapter(
-    private val productList: List<Product>
+    private val productList: List<Product>,
+    private val productItemClickListener: ProductItemClickListener
 ) : PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
@@ -20,6 +22,7 @@ class ProductViewPagerAdapter(
         val view = inflater.inflate(R.layout.item_view_pager_product, container, false)
 
         val product = productList[position]
+        view.setOnClickListener { productItemClickListener.itemClicked(position, product) }
 
         val imageView: ImageView = view.findViewById(R.id.ivProductImage)
         val titleView: TextView = view.findViewById(R.id.tvProductTitle)
@@ -31,6 +34,7 @@ class ProductViewPagerAdapter(
         titleView.text = product.productName
 
         container.addView(view)
+
         return view
     }
 

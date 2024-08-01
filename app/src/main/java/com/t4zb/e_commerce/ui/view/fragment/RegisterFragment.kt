@@ -33,7 +33,6 @@ class RegisterFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -56,9 +55,8 @@ class RegisterFragment : Fragment() {
             }
         })
 
-        mBinding.btnGoogleSignUp.setOnClickListener {
-            //will be develop
-          //  signIn()
+        mBinding.tvSignIn.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
         mBinding.btnSignUp.setOnClickListener {

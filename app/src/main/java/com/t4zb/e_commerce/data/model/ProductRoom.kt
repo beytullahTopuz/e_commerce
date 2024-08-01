@@ -50,4 +50,9 @@ class ProductRoom {
         this.productLabel = productLabel
         this.star = star
     }
+
+    override fun toString(): String {
+        return "ProductRoom(productIdInt=$productIdInt, productId=$productId, productName=$productName, productDescription=$productDescription, productPrice=$productPrice, productCategory=$productCategory, productStockCount=$productStockCount, productPicture=$productPicture, productOwner=$productOwner, productColor=$productColor, productSize=$productSize, productLabel=$productLabel, star=$star)"
+    }
+
 }

@@ -104,5 +104,8 @@ class ProfileFragment : Fragment(), ProfileOptionItemClickListener {
         if (index == 2) { // order page
             findNavController().navigate(R.id.action_navigation_profile_to_orderFragment)
         }
+        if (index == 5) {
+            findNavController().navigate(R.id.naw_graph_xml)
+        }
     }
 }
