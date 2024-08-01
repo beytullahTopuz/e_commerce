@@ -20,5 +20,11 @@ In this application, an e-commerce Android application has been developed using 
 ### market page 
 ![Resim 2](app_pictures/market.png)
 
-### detail page 3
-![Resim 3](app_pictures/product_detail_png.jpg)
+### detail page
+![Resim 3](app_pictures/product_detail.png)
+
+### Card page
+![Resim 3](app_pictures/card.png)
+
+### Register page
+![Resim 3](register/card.png)
