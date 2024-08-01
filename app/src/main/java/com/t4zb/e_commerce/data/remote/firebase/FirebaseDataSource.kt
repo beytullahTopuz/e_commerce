@@ -5,8 +5,12 @@ import android.util.Log
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import com.t4zb.e_commerce.data.model.Order
 import com.t4zb.e_commerce.data.model.Product
 import com.t4zb.e_commerce.data.model.User
 import com.t4zb.e_commerce.data.model.UserResultType
@@ -56,15 +60,15 @@ class FirebaseDataSource @Inject constructor(
             .addOnCompleteListener { dbTask ->
                 if (dbTask.isSuccessful) {
                     Log.d(TAG, "Database write successful")
-                    onComplete(UserResultType(true,userId))
+                    onComplete(UserResultType(true, userId))
                 } else {
                     Log.e(TAG, "Database write failed", dbTask.exception)
-                    onComplete(UserResultType(false,null))
+                    onComplete(UserResultType(false, null))
                 }
             }
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Database write failed", exception)
-                onComplete(UserResultType(false,null))
+                onComplete(UserResultType(false, null))
             }
     }
 
@@ -113,12 +117,12 @@ class FirebaseDataSource @Inject constructor(
                     onComplete(UserResultType(true, authTask.result.user?.uid))
                 } else {
                     Log.e(TAG, "Authentication failed", authTask.exception)
-                    onComplete(UserResultType(false,null))
+                    onComplete(UserResultType(false, null))
                 }
             }
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Authentication failed", exception)
-                onComplete(UserResultType(false,null))
+                onComplete(UserResultType(false, null))
             }
     }
 
@@ -158,7 +162,8 @@ class FirebaseDataSource @Inject constructor(
     }
 
     fun updateUserPicture(userId: String, downloadUrl: String, onComplete: (Boolean) -> Unit) {
-        firebaseDatabase.reference.child("users").child(userId).child("user_picture").setValue(downloadUrl)
+        firebaseDatabase.reference.child("users").child(userId).child("user_picture")
+            .setValue(downloadUrl)
             .addOnCompleteListener { task ->
                 onComplete(task.isSuccessful)
             }
@@ -200,4 +205,47 @@ class FirebaseDataSource @Inject constructor(
         }
     }
 
+    fun insertOrder(order: Order, callback: (Boolean, String?) -> Unit) {
+        val databaseReference =
+            FirebaseDatabase.getInstance().reference.child("orders").child(order.orderUserId)
+
+        val newOrderRef = databaseReference.push()
+        val orderId = newOrderRef.key
+
+        val orderWithId =
+            Order(orderId, order.orderUserId, order.orderCreateDate, order.basketProductList)
+
+        newOrderRef.setValue(orderWithId).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                callback(true, orderId)
+            } else {
+                callback(false, task.exception?.message)
+            }
+        }
+    }
+
+    fun getOrderListByUserId(userId: String, callback: (Boolean, List<Order>?, String?) -> Unit) {
+        val databaseReference =
+            FirebaseDatabase.getInstance().reference.child("orders").child(userId)
+
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                try {
+                    val orderList = mutableListOf<Order>()
+                    for (orderSnapshot in dataSnapshot.children) {
+                        val order = orderSnapshot.getValue(Order::class.java)
+                        order?.let { orderList.add(it) }
+                    }
+                    callback(true, orderList, null)
+                } catch (e: Exception) {
+                    callback(false, null, e.message)
+
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                callback(false, null, databaseError.message)
+            }
+        })
+    }
 }

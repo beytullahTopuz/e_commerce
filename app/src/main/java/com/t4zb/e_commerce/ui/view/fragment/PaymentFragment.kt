@@ -15,9 +15,14 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.t4zb.e_commerce.R
 import com.t4zb.e_commerce.data.config.AppConfig
 import com.t4zb.e_commerce.data.model.Basket
+import com.t4zb.e_commerce.data.model.Order
+import com.t4zb.e_commerce.data.model.ProductRoom
 import com.t4zb.e_commerce.databinding.FragmentPaymentBinding
 import com.t4zb.e_commerce.ui.viewmodel.PaymentViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @AndroidEntryPoint
 class PaymentFragment : Fragment() {
@@ -100,7 +105,18 @@ class PaymentFragment : Fragment() {
             if (isSuccess) {
                 Toast.makeText(mContext, "OTP confirmation successful", Toast.LENGTH_SHORT).show()
 
-                basketId?.let { viewModel.deleteBasket(it) }
+
+                val currentDate = getCurrentDate()
+                val order = Order(
+                    orderId = null,
+                    orderUserId = AppConfig.userId ?: "",
+                    orderCreateDate = currentDate,
+                    basketProductList = AppConfig.currentSelectedBasket?.basketProductList
+                        ?: emptyList()
+                )
+
+                viewModel.insertOrder(order)
+
                 AppConfig.currentSelectedBasket = null
                 AppConfig.currentSelectedProduct = null
                 findNavController().navigateUp()
@@ -109,6 +125,11 @@ class PaymentFragment : Fragment() {
                 Toast.makeText(mContext, "OTP confirmation failed", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        return dateFormat.format(Date())
     }
 
     private fun showOtpDialog() {

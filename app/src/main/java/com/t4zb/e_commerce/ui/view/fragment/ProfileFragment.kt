@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.t4zb.e_commerce.R
@@ -20,11 +21,12 @@ import com.t4zb.e_commerce.data.config.AppConfig.userId
 import com.t4zb.e_commerce.data.model.ProfileOption
 import com.t4zb.e_commerce.databinding.FragmentProfileBinding
 import com.t4zb.e_commerce.ui.adapter.ProfileOptionsAdapter
+import com.t4zb.e_commerce.ui.listener.ProfileOptionItemClickListener
 import com.t4zb.e_commerce.ui.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), ProfileOptionItemClickListener {
     private lateinit var mContext: Context
     private lateinit var mBinding: FragmentProfileBinding
     private val profileViewModel: ProfileViewModel by viewModels()
@@ -61,8 +63,8 @@ class ProfileFragment : Fragment() {
                 if (!user.user_picture.isNullOrBlank()) {
                     Glide.with(this)
                         .load(user.user_picture)
-                        .placeholder(R.drawable.profile_picture_dumy) // Placeholder image
-                        .error(R.drawable.profile_picture_dumy) // Error image
+                        .placeholder(R.drawable.profile_picture_dumy)
+                        .error(R.drawable.profile_picture_dumy)
                         .into(mBinding.ivProfileImage)
                 }
 
@@ -76,7 +78,9 @@ class ProfileFragment : Fragment() {
                 )
 
                 mBinding.rvProfileOptions.layoutManager = LinearLayoutManager(mContext)
-                mBinding.rvProfileOptions.adapter = ProfileOptionsAdapter(profileOptions)
+                mBinding.rvProfileOptions.adapter = ProfileOptionsAdapter(profileOptions, this)
+
+                mBinding.rvProfileOptions.adapter
             }
         })
 
@@ -93,6 +97,12 @@ class ProfileFragment : Fragment() {
             data?.data?.let { uri ->
                 userId?.let { profileViewModel.updateUserProfileImage(it, uri) }
             }
+        }
+    }
+
+    override fun onItemClicked(index: Int) {
+        if (index == 2) { // order page
+            findNavController().navigate(R.id.action_navigation_profile_to_orderFragment)
         }
     }
 }

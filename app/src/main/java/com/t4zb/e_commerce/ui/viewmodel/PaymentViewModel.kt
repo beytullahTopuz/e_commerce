@@ -1,12 +1,16 @@
 package com.t4zb.e_commerce.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.t4zb.e_commerce.data.local.repo.BasketRepo
 import com.t4zb.e_commerce.data.model.Basket
+import com.t4zb.e_commerce.data.model.Order
 import com.t4zb.e_commerce.data.model.User
+import com.t4zb.e_commerce.data.repository.OrderRepo
+import com.t4zb.e_commerce.data.repository.PaymentRepository
 import com.t4zb.e_commerce.data.repository.UserRepo
 import com.t4zb.paymentsdk.PaymentSDK
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,8 +19,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PaymentViewModel @Inject constructor(
-    private val paymentSDK: PaymentSDK,
-    private val basketRepo: BasketRepo
+    private val paymentRepository: PaymentRepository,
+    private val basketRepo: BasketRepo,
+    private val orderRepo: OrderRepo
 ) : ViewModel() {
 
     private val _cardNumber = MutableLiveData<String>()
@@ -52,7 +57,7 @@ class PaymentViewModel @Inject constructor(
         cvv: String
     ) {
         val expDate = "$expiryMonth/$expiryYear"
-        paymentSDK.startPayment(cardNumber, expDate, cvv, totalPrice) { success ->
+        paymentRepository.startPayment(totalPrice, cardNumber, expDate, cvv) { success ->
             if (success) {
                 _otpRequired.postValue(true)
             } else {
@@ -62,7 +67,7 @@ class PaymentViewModel @Inject constructor(
     }
 
     fun confirmPayment(opt: String) {
-        paymentSDK.confirmPayment(opt) { success ->
+        paymentRepository.confirmPayment(opt) { success ->
             _confirmationResult.postValue(success)
             _otpRequired.postValue(false)
         }
@@ -73,5 +78,12 @@ class PaymentViewModel @Inject constructor(
             basketRepo.deleteBasketById(basketId)
         }
     }
-}
 
+    fun insertOrder(order: Order) {
+        orderRepo.insertOrder(order) { isSuccess, result ->
+            run {
+                Log.d("TAG", "insertOrder: ${result.toString()}")
+            }
+        }
+    }
+}

@@ -8,8 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.t4zb.e_commerce.R
 import com.t4zb.e_commerce.data.model.ProfileOption
+import com.t4zb.e_commerce.ui.listener.ProfileOptionItemClickListener
 
-class ProfileOptionsAdapter(private val options: List<ProfileOption>) :
+class ProfileOptionsAdapter(private val options: List<ProfileOption>, private  val profileOptionItemClickListener: ProfileOptionItemClickListener) :
     RecyclerView.Adapter<ProfileOptionsAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,6 +30,10 @@ class ProfileOptionsAdapter(private val options: List<ProfileOption>) :
         val option = options[position]
         holder.icon.setImageResource(option.icon)
         holder.title.text = option.title
+
+        holder.itemView.setOnClickListener {
+            profileOptionItemClickListener.onItemClicked(position)
+        }
 
         if (position == options.size - 1) {
             holder.divider.visibility = View.GONE

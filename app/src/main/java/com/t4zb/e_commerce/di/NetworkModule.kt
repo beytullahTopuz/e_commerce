@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.t4zb.e_commerce.R
 import com.t4zb.e_commerce.data.remote.firebase.FirebaseDataSource
+import com.t4zb.e_commerce.data.repository.OrderRepo
 import com.t4zb.e_commerce.data.repository.ProductRepo
 import com.t4zb.e_commerce.data.repository.UserRepo
 import dagger.Module
@@ -69,4 +70,11 @@ class NetworkModule {
     fun provideProductRepo(firebaseDataSource: FirebaseDataSource): ProductRepo {
         return ProductRepo(firebaseDataSource)
     }
+
+    @Provides
+    @Singleton
+    fun provideOrderRepo(firebaseDataSource: FirebaseDataSource): OrderRepo {
+        return OrderRepo(firebaseDataSource)
+    }
+
 }
