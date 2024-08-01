@@ -1,15 +1,19 @@
 package com.t4zb.e_commerce.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.t4zb.e_commerce.R
 import com.t4zb.e_commerce.data.model.Order
 import com.t4zb.e_commerce.data.model.ProductRoom
 
-class OrderAdapter(private val orders: List<Order>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OrderAdapter(private val orders: List<Order>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         private const val VIEW_TYPE_HEADER = 0
@@ -22,10 +26,12 @@ class OrderAdapter(private val orders: List<Order>) : RecyclerView.Adapter<Recyc
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_HEADER) {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order_header, parent, false)
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_order_header, parent, false)
             HeaderViewHolder(view)
         } else {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_order_body, parent, false)
+            val view =
+                LayoutInflater.from(parent.context).inflate(R.layout.item_order_body, parent, false)
             BodyViewHolder(view)
         }
     }
@@ -72,21 +78,31 @@ class OrderAdapter(private val orders: List<Order>) : RecyclerView.Adapter<Recyc
         private val tvOrderItemSize: TextView = itemView.findViewById(R.id.tvOrderItemSize)
         private val tvOrderTotalPrice: TextView = itemView.findViewById(R.id.tvOrderTotalPrice)
 
+        @SuppressLint("SetTextI18n")
         fun bind(order: Order) {
             tvOrderCreateDate.text = order.orderCreateDate
-            tvOrderItemSize.text = "Items: ${order.basketProductList.size}"
+            tvOrderItemSize.text = "Product : ${order.basketProductList.size}"
             val totalPrice = order.basketProductList.sumOf { it.productPrice ?: 0.0 }
-            tvOrderTotalPrice.text = "Total Price: $$totalPrice"
+            tvOrderTotalPrice.text = "$totalPrice"
         }
     }
 
     class BodyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvProductName: TextView = itemView.findViewById(R.id.tvProductName)
         private val tvProductPrice: TextView = itemView.findViewById(R.id.tvProductPrice)
+        private val icPicture: ImageView = itemView.findViewById(R.id.icPicture)
 
+        @SuppressLint("SetTextI18n")
         fun bind(product: ProductRoom) {
             tvProductName.text = product.productName
-            tvProductPrice.text = "Price: $${product.productPrice}"
+            tvProductPrice.text = "TL: ${product.productPrice}"
+
+            Glide.with(itemView.context)
+                .load(product.productPicture)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .error(R.drawable.ic_launcher_foreground)
+                .into(icPicture)
+
         }
     }
 }

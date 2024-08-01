@@ -16,7 +16,6 @@ import com.t4zb.e_commerce.ui.adapter.OrderAdapter
 import com.t4zb.e_commerce.ui.viewmodel.OrderViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class OrderFragment : Fragment() {
 

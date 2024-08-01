@@ -29,4 +29,5 @@
     <string name="change">CHANGE</string>
     <string name="order_list">Order List</string>
     <string name="save_card">Save Card</string>
+    <string name="order">Order</string>
 </resources>
