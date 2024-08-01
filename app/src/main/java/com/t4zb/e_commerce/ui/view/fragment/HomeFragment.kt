@@ -37,11 +37,56 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mBinding = FragmentHomeBinding.bind(view)
 
-
-        val navHostFragment = childFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            childFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         val bottomNavigationView = mBinding.bottomNavigation
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_market -> {
+                    navController.navigate(R.id.navigation_market)
+                    true
+                }
+
+                R.id.orderFragment -> {
+                    navController.navigate(R.id.orderFragment)
+                    true
+                }
+
+                R.id.navigation_basket -> {
+                    navController.popBackStack(R.id.navigation_basket, true)
+                    navController.navigate(R.id.navigation_basket)
+                    true
+                }
+
+                R.id.navigation_profile -> {
+                    navController.navigate(R.id.navigation_profile)
+                    true
+                }
+
+                else -> false
+            }
+        }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.productDetailFragment,
+                R.id.checkoutFragment,
+                R.id.paymentFragment -> hideBottomNav()
+
+                else -> showBottomNav()
+            }
+        }
+    }
+
+    private fun hideBottomNav() {
+        mBinding.bottomNavigation.visibility = View.GONE
+    }
+
+    private fun showBottomNav() {
+        mBinding.bottomNavigation.visibility = View.VISIBLE
     }
 }
